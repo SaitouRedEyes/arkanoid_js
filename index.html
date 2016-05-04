@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body onLoad="start()">
+
+<canvas id="myCanvas" width="640" height="480" style="border:1px solid #000000;"></canvas>
+
+<script src = "js/static_screen.js"></script>
+<script src = "js/game.js"></script>
+<script src = "js/player.js"></script>
+<script src = "js/ball.js"></script>
+<script src = "js/block.js"></script>
+<script src = "js/block_manager.js"></script>
+<script src = "js/score.js"></script>
+<script>
+
+	var canvas = document.getElementById("myCanvas");
+	var context = canvas.getContext("2d");	
+	
+	var scene = new StaticScreen("images/StartScreen.jpg", "start");	
+	
+	var _keyDown = function(e) { scene.keyboardHandler(e, true); }
+	var _keyUp = function(e) { scene.keyboardHandler(e, false); }
+	
+	document.addEventListener("keydown", _keyDown, true);
+	document.addEventListener("keyup", _keyUp, true);
+	
+	function loop()
+	{
+		scene.update();
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		scene.draw();
+		setTimeout(loop, 30);
+	}
+	
+	var start = function() { loop(); }	
+	
+</script>
