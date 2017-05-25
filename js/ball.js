@@ -40,7 +40,7 @@ var Ball = function()
 				this.y + this.image.height > player.y)
 			{				
 				this.speedY *= -1;
-			}		
+			}
 		}
 	}
 	
